@@ -5,11 +5,6 @@ export DOTFILES=$HOME/.dotfiles
 # include my library helpers for colorized echo and require_brew, etc
 source $DOTFILES/bootstrap/lib/helpers.sh
 
-# make a backup directory for overwritten dotfiles
-if [[ ! -e ~/.dotfiles_backup ]]; then
-    mkdir ~/.dotfiles_backup
-fi
-
 log "Hi. Time for magic!"
 log "Updating your submodules"
 

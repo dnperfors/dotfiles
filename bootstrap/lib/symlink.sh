@@ -19,13 +19,26 @@ running "installing dotfiles"
   backup_all=false
   skip_all=false
 
+  if [ ! -z "$FULL_RUN" ]
+  then
+    case "$FULL_RUN" in
+      O )
+        overwrite_all=true;;
+      B )
+        backup_all=true;;
+      S )
+        skip_all=true;;
+      * )
+        backup_all=true;;
+    esac
+  fi
+
   for source in `find $DOTFILES_ROOT -maxdepth 4 -name \*.symlink`
   do
     dest="$HOME/.`basename \"${source%.*}\"`"
 
     if [ -f $dest ] || [ -d $dest ]
     then
-
       overwrite=false
       backup=false
       skip=false
